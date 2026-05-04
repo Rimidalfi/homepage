@@ -1,0 +1,36 @@
+services:
+  wagtail: 
+    build: .
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    depends_on:
+        postgres:
+          condition: "service_healthy"
+          restart: true
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    environment:
+      - DJANGO_SETTINGS_MODULE=jano.settings.production
+  postgres:
+    container_name: postgres
+    image: postgres:18-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+volumes:
+  db_data:
