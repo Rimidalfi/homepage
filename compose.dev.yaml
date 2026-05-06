@@ -1,12 +1,14 @@
 services:
-  wagtail: 
-    build: .
+  wagtail:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "8000:8000"
     restart: unless-stopped
     depends_on:
-        postgres:
-          condition: "service_healthy"
+      postgres:
+        condition: "service_healthy"
     volumes:
       - type: bind
         source: .
