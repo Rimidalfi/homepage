@@ -1,19 +1,19 @@
 services:
-  wagtail: 
+  wagtail:
     build: .
     ports:
       - "8000:8000"
     restart: unless-stopped
     depends_on:
-        postgres:
-          condition: "service_healthy"
-          restart: true
+      postgres:
+        condition: "service_healthy"
+        restart: true
     volumes:
       - type: bind
         source: .
         target: /app
     environment:
-      - DJANGO_SETTINGS_MODULE=jano.settings.production
+      - DJANGO_SETTINGS_MODULE=core.settings.production
   postgres:
     container_name: postgres
     image: postgres:18-alpine

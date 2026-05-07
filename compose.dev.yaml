@@ -14,7 +14,7 @@ services:
         source: .
         target: /app
     environment:
-      - DJANGO_SETTINGS_MODULE=jano.settings.dev
+      - DJANGO_SETTINGS_MODULE=core.settings.dev
   postgres:
     container_name: postgres
     image: postgres:18-alpine

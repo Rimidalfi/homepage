@@ -9,4 +9,4 @@ down:
 	docker compose -f compose.dev.yaml down
 	docker image prune -f
 css:
-	npx @tailwindcss/cli -i ./jano/static/css/input.css -o ./jano/static/css/output.css --watch
+	npx @tailwindcss/cli -i ./core/static/css/input.css -o ./core/static/css/output.css --watch
