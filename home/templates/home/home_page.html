@@ -7,23 +7,23 @@
 
 <!-- replace everything below with: -->
 {% block content %}
-    {{ page.body|richtext }}
-    {% comment %} <p>Fucker</p> {% endcomment %}
-<p>🍑</p>
-<div class="hover-3d">
-  <!-- content -->
-  <figure class="w-60 rounded-2xl">
-    <img src="https://img.daisyui.com/images/stock/card-2.webp?x" alt="Tailwind CSS 3D hover" />
-  </figure>
-  <!-- 8 empty divs needed for the 3D effect -->
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+<div
+  class="hero min-h-screen"
+  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);"
+>
+  <div class="hero-overlay"></div>
+  <div class="hero-content text-neutral-content text-center">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+      <p class="mb-5">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+        quasi. In deleniti eaque aut repudiandae et a id nisi.
+      </p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </div>
 </div>
-
+<article class="prose lg:prose-xl m-4">
+    {{ page.body|richtext }}
+</article>
 {% endblock %}
