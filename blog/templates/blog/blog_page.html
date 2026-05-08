@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% comment %}body_class for CSS-classes {% endcomment %}
+{% block body_class %}template-blogpage{% endblock %}
+{% block content %}
+{{page.author}}
+
+{% for block in page.body %}
+    {% if block.block_type == "heading" %}
+    <h1 class="text-5xl">{{block.value}}</h1>
+    {% endif %}
+    {% if block.block_type == "paragraph" %}
+    <article class="prose lg:prose-xl">{{block.value }}</article>
+    {% endif %}
+    {% if block.block_type == "image" %}
+    <div class="">{{block.value}}</div>
+    {% endif %}
+    
+{% endfor %}
+{% endblock %}
