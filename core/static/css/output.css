@@ -7,6 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-amber-200: oklch(92.4% 0.12 95.746);
     --spacing: 0.25rem;
     --container-md: 28rem;
     --text-xl: 1.25rem;
@@ -1316,6 +1317,9 @@
   .rounded-t-none {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+  .bg-amber-200 {
+    background-color: var(--color-amber-200);
   }
   .bg-base-100 {
     background-color: var(--color-base-100);

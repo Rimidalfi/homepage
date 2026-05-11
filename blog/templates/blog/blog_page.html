@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% comment %}body_class for CSS-classes {% endcomment %}
 {% block body_class %}template-blogpage{% endblock %}
@@ -15,8 +15,7 @@
     <article class="prose lg:prose-xl">{{block.value }}</article>
     {% endif %}
     {% if block.block_type == "image" %}
-    <div class="">{{block.value}}</div>
+        {% image block.value fill-320x240%}        
     {% endif %}
-    
 {% endfor %}
 {% endblock %}
