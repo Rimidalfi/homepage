@@ -8,6 +8,17 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.images.blocks import ImageBlock
 
 
+class CustomImageBlock(blocks.StructBlock):
+    """Added caption & heading text to ImageBlock()"""
+
+    image = ImageBlock()
+    heading = blocks.CharBlock(required=False)
+    caption = blocks.CharBlock(required=False)
+
+    class Meta:
+        icon = "image"
+
+
 class BlogIndexPage(Page):
     """"""
 
@@ -34,7 +45,7 @@ class BlogPage(Page):
         [
             ("heading", blocks.CharBlock(form_classname="title")),
             ("paragraph", blocks.RichTextBlock()),
-            ("image", ImageBlock()),
+            ("image", CustomImageBlock()),
         ]
     )
 
