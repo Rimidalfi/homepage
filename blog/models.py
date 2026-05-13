@@ -44,6 +44,7 @@ class BlogPage(Page):
     body = StreamField(
         [
             ("heading", blocks.CharBlock(form_classname="title")),
+            ("subtitle", blocks.CharBlock(form_classname="subtitle")),
             ("paragraph", blocks.RichTextBlock()),
             ("image", CustomImageBlock()),
         ]
@@ -53,7 +54,6 @@ class BlogPage(Page):
         FieldPanel("author"),
         FieldPanel("date"),
         FieldPanel("body"),
-        "gallery_images",
     ]
 
 

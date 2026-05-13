@@ -1,0 +1,23 @@
+<div class="prose lg:prose-xl">
+
+    {% for block in page.body %}
+
+        {% if block.block_type == "heading" %}
+        <h1 class="">{{block.value}}</h1>
+        {% endif %}
+        
+        {% if block.block_type == "subtitle" %}
+        <h3 class="">{{block.value}}</h3>
+        {% endif %}
+
+        {% if block.block_type == "paragraph" %}
+        <article class="">{{block.value }}</article>
+        {% endif %}
+
+        {% if block.block_type == "image" %}
+            {% include "comp_block_image.html" %}
+        {% endif %}
+
+    {% endfor %}
+
+</div>
