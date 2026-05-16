@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+<div class="bg-amber-200">
+    <h1>{{page.heading}}</h1>
+    <div>{{ page.intro | richtext }}</div>
+</div>
+
+{% for post in blogpages %}
+    {% with post=post.specific %}
+
+    <h2><a href="{% pageurl post%}">{{post.title}}</a></h2>
+    
+        {% for block in post.body %}
+        
+        <div class="{{block.block_type}}">
+
+            {{block.block_type}}
+        </div>
+        {% endfor %}
+    
+    {% endwith %}
+
+{% endfor %}
+
+{% endblock %}
+
