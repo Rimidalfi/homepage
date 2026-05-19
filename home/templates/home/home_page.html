@@ -8,62 +8,58 @@
 
 {% block content %} 
 {% for block in page.hero %} 
-
-{% if block.block_type == "Hero" %}
 <section id={{block.value.anchor}} class="flex flex-col relative">
     {% image block.value.image scale-50 class="bg-emerald-500 w-full object-cover"%}
     <h2 class="absolute text-amber-100 text-9xl">{{block.value.headline}}</h2>
 </section>
-{% endif %}
+{% endfor %} 
+
+{% for block in page.problem %}
+<section id={{block.value.anchor}} class="bg-amber-200 flex relative px-40 py-20 gap-12">
+
+    {% if page.problem_card %}
+    <div class="flex flex-col justify-center gap-4 w-4/6 -translate-y-8">
+    {% else %}
+    <div class="flex flex-col justify-center gap-4 ">
+    {% endif %}
+
+        <span class="badge badge-md">{{block.value.tag}}</span>
+        <h2 class="text-5xl text-mist-900">{{block.value.heading}}</h2>
+        <h3 class="text-2xl text-mist-700">{{block.value.paragraph}}</h3>
+    </div>
+
+{% if page.problem_card %}
+<div class="flex flex-col items-center justify-center  w-2/6 gap-1">
+{% for block in page.problem_card  %}
     
-
-<section class="bg-amber-200 flex relative px-40 gap-12">
-
-    <div class="flex flex-col my-96 gap-4 w-4/6 -translate-y-10">
-        <span class="badge badge-md">Problem</span>
-        <h2 class="text-5xl text-mist-900">Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf</h2>
-        <h3 class="text-2xl text-mist-700">Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich</h3>
+    {% if forloop.counter0 == 0 %}
+    <div class="card w-96 bg-base-100 shadow-sm -rotate-3">
+    {% elif forloop.counter0 == 1 %}
+    <div class="card w-96 bg-base-100 shadow-sm rotate-2 translate-x-6">
+    {% else %}
+    <div class="card w-96 bg-base-100 shadow-sm -rotate-2 ">
+    {% endif %} 
+    <div class="card-body">
+    {% image block.value.icon fill-35x35 format-webp preserve-svg %}
+    <div class="flex flex-col justify-between">
+    <h2 class="text-3xl font-bold">{{block.value.heading}}</h2>
+    <p>{{block.value.paragraph}}</p>
+    </div>
+    </div>
     </div>
 
-    <div class="flex flex-col my-48 w-2/6 gap-1">
-
-        <div class="card w-96 bg-base-100 shadow-sm -rotate-3">
-        <div class="card-body">
-        <span class="badge badge-xs badge-warning">Most Popular</span>
-        <div class="flex flex-col justify-between">
-        <h2 class="text-3xl font-bold">Premium</h2>
-        <p> Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe</p>
-        </div>
-        </div>
-        </div>
-
-        <div class="card w-96 bg-base-100 shadow-sm rotate-2 translate-x-6">
-        <div class="card-body">
-        <span class="badge badge-xs badge-warning">Pain Point</span>
-        <div class="flex flex-col justify-between">
-        <h2 class="text-3xl font-bold">Problem</h2>
-        <p> Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe</p>
-        </div>
-        </div>
-        </div>
-
-        <div class="card w-96 bg-base-100 shadow-sm -rotate-2 ">
-        <div class="card-body">
-        <span class="badge badge-xs badge-warning">Pain Point</span>
-        <div class="flex flex-col justify-between">
-        <h2 class="text-3xl font-bold">Problem</h2>
-        <p> Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe</p>
-        </div>
-        </div>
-        </div>
-
-    </div>
+{% endfor %}
+</div>
+{% endif %}
+{% endfor %}
 
 </section>
+
 <section></section>
 <section></section>
 <section></section>
 <section></section>
 <section></section>
-{% endfor %} 
+
 {% endblock %}
+
