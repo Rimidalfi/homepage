@@ -1,0 +1,16 @@
+{% load wagtailcore_tags navigation_tags %}
+
+
+<div>
+    {% for anchor in nav_links%}
+  
+     <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li>
+                <a href="{%pageurl site_root %}#{{anchor.anchor_link}}">{{anchor.anchor_name}}</a>
+            </li>
+        </ul>
+    </div> 
+
+    {% endfor %}
+</div>

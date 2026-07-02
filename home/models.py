@@ -13,6 +13,7 @@ class HeroBlock(blocks.StructBlock):
     image = ImageBlock(label="Bild")
     cta = blocks.CharBlock(label="CTA")
     anchor = blocks.CharBlock(label="Anchor Link", required=False)
+    anchor_name = blocks.CharBlock(label="Anchor Name", required=False)
     headline = blocks.RichTextBlock(label="Headline")
     sub_headline = blocks.RichTextBlock(label="Sub Headline", required=False)
 
@@ -24,6 +25,7 @@ class ProblemBlock(blocks.StructBlock):
     heading = blocks.CharBlock(label="Überschrift")
     paragraph = blocks.CharBlock(label="Beschreibung")
     anchor = blocks.CharBlock(label="Anchor Link", required=False)
+    anchor_name = blocks.CharBlock(label="Anchor Name", required=False)
 
 
 class ProblemCard(blocks.StructBlock):
@@ -39,7 +41,7 @@ class HomePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        print(context)
+        print("CONTEXT", context)
         return context
 
     hero = StreamField(

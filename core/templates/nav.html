@@ -1,25 +1,24 @@
-{% load static %}
+{% load static wagtailcore_tags navigation_tags %}
+{% get_site_root as site_root %}
+
 <nav>
-    <div class="navbar bg-base-100 shadow-sm">
-        <div class="flex-1">
-            <a class="" href="">
+    <div class="flex flex-row justify-between items-center m-2" >
+
+        <div class="">
+            <a class="" href="{% pageurl site_root %}">
                 <img src="{% static 'img/Jano_Creations_Logo.svg' %}" class="h-8 mx-4"></img>
-                
             </a>
         </div>
+
+        {% for menuitem in site_root.get_children.live.in_menu %}
         <div class="flex-none">
-            <ul class="menu menu-horizontal px-1">
-            <li><a href="">blog</a></li>
-            <li>
-                <details>
-                <summary>Parent</summary>
-                <ul class="bg-base-100 rounded-t-none p-2">
-                    <li><a>Link 1</a></li>
-                    <li><a>Link 2</a></li>
-                </ul>
-                </details>
-            </li>
-            </ul>
-        </div>
+        <ul class="menu menu-horizontal px-1">
+        <li>
+            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+        </li>
+        </ul>
+        </div>  
+        {% endfor %}
+        {%get_nav_links%}
     </div>
 </nav>

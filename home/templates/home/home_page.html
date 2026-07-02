@@ -9,7 +9,7 @@
 {% block content %} 
 {% for block in page.hero %} 
 <section id={{block.value.anchor}} class="flex flex-col relative">
-    {% image block.value.image scale-50 class="bg-emerald-500 w-full object-cover"%}
+    {% image block.value.image scale-50 class="bg-emerald-500 object-cover h-full"%}
     <h2 class="absolute text-amber-100 text-9xl">{{block.value.headline}}</h2>
 </section>
 {% endfor %} 
@@ -33,11 +33,11 @@
 {% for block in page.problem_card  %}
     
     {% if forloop.counter0 == 0 %}
-    <div class="card w-96 bg-base-100 shadow-sm -rotate-3">
+    <div class="card w-96 bg-base-100 shadow-md-rotate-3">
     {% elif forloop.counter0 == 1 %}
-    <div class="card w-96 bg-base-100 shadow-sm rotate-2 translate-x-6">
+    <div class="card w-96 bg-base-100 shadow-md rotate-2 translate-x-6 z-50">
     {% else %}
-    <div class="card w-96 bg-base-100 shadow-sm -rotate-2 ">
+    <div class="card w-96 bg-base-100 shadow-md -rotate-2 ">
     {% endif %} 
     <div class="card-body">
     {% image block.value.icon fill-35x35 format-webp preserve-svg %}
