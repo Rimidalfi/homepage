@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+<form
+    method="POST"
+    action="{% pageurl page %}"
+    hx-post="{% pageurl page %}"
+    hx-target="#contact-form-container"
+    hx-swap="outerHTML"
+>
+    {% csrf_token %}
+
+    {{ form.as_div }}
+
+    <button type="submit">Absenden</button>
+</form>

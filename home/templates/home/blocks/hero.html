@@ -1,0 +1,5 @@
+{% load wagtailimages_tags%} 
+<section id={{value.anchor}} class="flex flex-col relative">
+    {% image value.image scale-50 class="bg-emerald-500 object-cover h-full"%}
+    <h2 class="absolute text-amber-100 text-9xl">{{value.headline}}</h2>
+</section>

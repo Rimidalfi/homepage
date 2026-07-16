@@ -37,19 +37,27 @@ def get_nav_links(context):
             rootpage = (
                 Site.find_for_request(context["request"]).root_page if request else None
             )
-            # extracting anchor data from streamValue fields
-            for field in instance._meta.fields:
-                value = getattr(instance, field.name, None)
-                if type(value) == StreamValue and len(value) == 1:
-                    block = value[0].value
-                    anchors.append(
-                        {
-                            "anchor_link": block["anchor"],
-                            "anchor_name": block["anchor_name"],
-                        }
-                    )
 
-            return {"nav_links": anchors, "site_root": rootpage}
+            # getting anchor data from streamValue fields
+            for field in instance._meta.fields:
+
+                value = getattr(instance, field.name, None)
+
+                if type(value) == StreamValue:
+
+                    for v in value:
+                        # check for fields with anchor in it
+                        if "anchor" in v.value:
+
+                            block = v.value
+                            anchors.append(
+                                {
+                                    "anchor_link": block["anchor"],
+                                    "anchor_name": block["anchor_name"],
+                                }
+                            )
+                    return {"nav_links": anchors, "site_root": rootpage}
+
         except Exception as e:
             print("EXEPTION: ", e)
             return {"nav_links": ""}

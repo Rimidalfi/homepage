@@ -1,0 +1,17 @@
+{% load wagtailimages_tags%} 
+
+{% if forloop.counter0 == 0 %}
+<div class="card w-full md:w-96 bg-base-100 shadow-md md:rotate-3">
+{% elif forloop.counter0 == 1 %}
+<div class="card w-full md:w-96 bg-base-100 shadow-md md:rotate-2 md:translate-x-6 z-50">
+{% else %}
+<div class="card w-full md:w-96 bg-base-100 shadow-md md:rotate-2 ">
+{% endif %} 
+    <div class="card-body">
+    {% image card.icon fill-35x35 format-webp preserve-svg %}
+        <div class="flex flex-col justify-between">
+            <h2 class="text-3xl font-bold">{{card.heading}}</h2>
+            <p>{{card.paragraph}}</p>
+        </div>
+    </div>
+</div>

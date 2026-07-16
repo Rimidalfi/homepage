@@ -1,0 +1,15 @@
+{% load wagtailcore_tags %}
+
+<section id="{{ value.anchor }}">
+    {% if value.heading %}
+        <h2>{{ value.heading }}</h2>
+    {% endif %}
+
+    {% if value.intro %}
+        {{ value.intro|richtext }}
+    {% endif %}
+
+    <div id="contact-form-container">
+        {% include "home/partials/form_fields.html" with page=page form=form only %}
+    </div>
+</section>
